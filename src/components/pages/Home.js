@@ -9,7 +9,6 @@ function Home(props) {
   const { breeds, getBreeds, selectedBreed, setSelectedBreed } = catContext;
 
   useEffect(() => {
-    console.log(props.location.search);
     const breedId = new URLSearchParams(props.location.search).get("breed");
     setSelectedBreed(breedId || "");
     // eslint-disable-next-line react-hooks/exhaustive-deps

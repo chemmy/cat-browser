@@ -29,7 +29,7 @@ function Cat() {
   return (
     <Container className="Cat">
       {isLoading ? (
-        <h1>Loading....</h1>
+        <h5>Loading....</h5>
       ) : (
         <Card>
           <Card.Header>
