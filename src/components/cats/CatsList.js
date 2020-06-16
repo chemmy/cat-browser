@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Row, Col, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import CatCard from "../cats/CatCard";
 
 import CatContext from "../../context/cat/catContext";
@@ -7,6 +8,8 @@ import CatContext from "../../context/cat/catContext";
 function CatsList() {
   const catContext = useContext(CatContext);
   const { cats, selectedBreed, isLoading, hasMore, getCatsList } = catContext;
+
+  const history = useHistory();
 
   useEffect(() => {
     getCatsList();
@@ -19,7 +22,10 @@ function CatsList() {
         <Row>
           {cats.map((cat) => (
             <Col key={cat.id} md={3} sm={6}>
-              <CatCard img={cat.url} />
+              <CatCard
+                img={cat.url}
+                onViewDetails={() => history.push(`/${cat.id}`)}
+              />
             </Col>
           ))}
         </Row>

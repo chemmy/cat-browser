@@ -9,6 +9,7 @@ import {
   SET_SELECTED_BREED,
   SET_LOADING,
   SET_SEARCH_OPTIONS,
+  GET_CAT,
 } from "../types";
 
 const SEARCH_LIMIT = 10;
@@ -53,6 +54,13 @@ const CatState = (props) => {
     dispatch({ type: GET_CATS, payload: newList });
   };
 
+  const getCat = async (id) => {
+    if (!id) return;
+    dispatch({ type: SET_LOADING });
+    const { data } = await catapi.get(`/images/${id}`);
+    dispatch({ type: GET_CAT, payload: data });
+  };
+
   const setSelectedBreed = (breedId) => {
     dispatch({ type: SET_SELECTED_BREED, payload: breedId });
   };
@@ -65,9 +73,11 @@ const CatState = (props) => {
         selectedBreed: state.selectedBreed,
         isLoading: state.isLoading,
         hasMore: state.hasMore,
+        selectedCat: state.selectedCat,
         getBreeds,
         getCatsList,
         setSelectedBreed,
+        getCat,
       }}
     >
       {props.children}
