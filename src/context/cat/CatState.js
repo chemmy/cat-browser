@@ -18,7 +18,7 @@ const CatState = (props) => {
   const initialState = {
     breeds: [],
     cats: [],
-    selectedBreed: null,
+    selectedBreed: "",
     selectedCat: null,
     page: 0,
     isLoading: false,

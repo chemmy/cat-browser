@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import { useRouteMatch, Link } from "react-router-dom";
 import get from "lodash/get";
-import { Container, Card, Button } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 
 import CatContext from "../../context/cat/catContext";
 
 function Cat() {
-  const history = useHistory();
   const match = useRouteMatch();
   const catContext = useContext(CatContext);
   const { getCat, isLoading, selectedCat } = catContext;
@@ -22,8 +21,8 @@ function Cat() {
   useEffect(() => {
     const breed = get(selectedCat, "breeds[0]", {});
     const img = get(selectedCat, "url");
-    const { temperament, origin, description, name } = breed;
-    const details = { img, temperament, origin, description, name };
+    const { temperament, origin, description, name, id } = breed;
+    const details = { img, temperament, origin, description, name, id };
     setCat(details);
   }, [selectedCat]);
 
@@ -34,9 +33,9 @@ function Cat() {
       ) : (
         <Card>
           <Card.Header>
-            <Button variant="primary" onClick={() => history.push("/")}>
+            <Link className="btn btn-primary" to={`/?breed=${cat.id}`}>
               Back
-            </Button>
+            </Link>
           </Card.Header>
           <Card.Img variant="top" src={cat.img} />
           <Card.Body>
