@@ -31,7 +31,7 @@ function CatsList() {
         </Row>
       ) : (
         <Row>
-          <Col>No cats available</Col>
+          <Col className="empty-list">No cats available</Col>
         </Row>
       )}
 

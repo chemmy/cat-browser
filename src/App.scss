@@ -1,5 +1,21 @@
 .App {
   .Home {
     padding: 20px 0;
+
+    .filter {
+      padding: 10px 0;
+    }
+
+    .empty-list {
+      margin-bottom: 20px;
+    }
+
+    .list-cat-card {
+      margin-bottom: 20px;
+    }
+  }
+
+  .Cat {
+    padding: 20px 0;
   }
 }

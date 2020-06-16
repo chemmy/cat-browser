@@ -28,7 +28,7 @@ function Cat() {
   }, [selectedCat]);
 
   return (
-    <Container>
+    <Container className="Cat">
       {isLoading ? (
         <h1>Loading....</h1>
       ) : (

@@ -3,10 +3,10 @@ import { Card, Button } from "react-bootstrap";
 
 function CatCard({ img, onViewDetails }) {
   return (
-    <Card>
+    <Card className="list-cat-card">
       <Card.Img variant="top" src={img} />
       <Card.Body>
-        <Button variant="primary" onClick={onViewDetails}>
+        <Button variant="primary" block onClick={onViewDetails}>
           View details
         </Button>
       </Card.Body>
