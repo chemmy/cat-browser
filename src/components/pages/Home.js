@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 
+import CatContext from "../../context/cat/catContext";
+
 function Home() {
+  const catContext = useContext(CatContext);
+  const { breeds, getBreeds } = catContext;
+
+  useEffect(() => {
+    getBreeds();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="Home">
       <Container>
@@ -13,7 +23,9 @@ function Home() {
               <Form.Label>Breed</Form.Label>
               <Form.Control as="select" defaultValue="Select breed">
                 <option>Select breed</option>
-                <option>...</option>
+                {breeds.map((breed) => (
+                  <option key={breed.id}>{breed.name}</option>
+                ))}
               </Form.Control>
             </Form.Group>
           </Col>
